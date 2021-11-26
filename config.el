@@ -64,3 +64,6 @@
 
 ;; Because evil-search mode ignores or smart search (or evil-ex-search-case?) overrides case-fold-search
 (setq evil-ex-search-case 'sensitive)
+
+;; Unbind M-. in evil-normal-state-map
+(define-key evil-normal-state-map (kbd "M-.") nil)
