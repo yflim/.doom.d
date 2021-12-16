@@ -67,3 +67,6 @@
 
 ;; Unbind M-. in evil-normal-state-map
 (define-key evil-normal-state-map (kbd "M-.") nil)
+
+;; Eniable org-mode Markdown export backend
+(after! org (add-to-list 'org-export-backends 'md))
