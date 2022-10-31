@@ -6,7 +6,7 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setq user-full-name "Yee Fay Lim       "
+(setq user-full-name "Yee Fay Lim"
       user-mail-address "yeefay.lim@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
@@ -65,8 +65,15 @@
 ;; Because evil-search mode ignores or smart search (or evil-ex-search-case?) overrides case-fold-search
 (setq evil-ex-search-case 'sensitive)
 
+(setq org-src-preserve-indentation nil)
+(setq org-edit-src-content-indentation 0)
+
 ;; Unbind M-. in evil-normal-state-map
 (define-key evil-normal-state-map (kbd "M-.") nil)
 
-;; Eniable org-mode Markdown export backend
+;; Enable org-mode Markdown export backend
 (after! org (add-to-list 'org-export-backends 'md))
+
+;; Display en- and em-dashes in-buffer. Doesn't seem to work.
+;(add-hook 'org-mode-hook (lambda () (push '("--" . ?–) prettify-symbols-alist)))
+;(add-hook 'org-mode-hook (lambda () (push '("---" . ?—) prettify-symbols-alist)))
