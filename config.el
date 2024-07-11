@@ -29,12 +29,16 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+;; (setq org-directory "~/org/")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
+;; Enable windmove for easy window navigation
+(use-package! windmove
+  :config
+  (windmove-default-keybindings))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -52,6 +56,9 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;; Instant GitHub-flavored Markdown/Org preview using a grip subprocess
+(add-hook 'markdown-mode-hook #'grip-mode)
 
 ;; Restore old substitution behaviour on s
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
@@ -73,6 +80,28 @@
 
 ;; Enable org-mode Markdown export backend
 (after! org (add-to-list 'org-export-backends 'md))
+
+;; uncomment if ever needed again for sane Python code block indentation
+(setq python-indent-guess-indent-offset-verbose t)
+(setq tab-width 4)
+(setq python-indent-offset 4)
+
+;; Associate .vue Files with web-mode
+(add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
+(setq web-mode-enable-current-element-highlight t)
+(setq web-mode-enable-current-column-highlight t)
+
+;; Only (perhaps) relevant if I ever try to make LSP for Clojure work again
+;; Remove lookup handlers conflict between LSP, cider, and clj-refactor?
+;(use-package! cider
+;  :after clojure-mode
+;  :config
+;  (set-lookup-handlers! 'cider-mode nil))
+;
+;(use-package! clj-refactor
+;  :after clojure-mode
+;  :config
+;  (set-lookup-handlers! 'clj-refactor-mode nil))
 
 ;; Display en- and em-dashes in-buffer. Doesn't seem to work.
 ;(add-hook 'org-mode-hook (lambda () (push '("--" . ?–) prettify-symbols-alist)))

@@ -49,6 +49,11 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-(package! company)
-(package! cider)
+(package! flycheck-clj-kondo)
+(package! lsp-treemacs)
+(package! grip-mode)
+(package! ox-pandoc)
 (package! projectile)
+(package! rg)
+(package! web-mode)
+(package! wgrep)
